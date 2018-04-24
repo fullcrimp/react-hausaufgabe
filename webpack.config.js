@@ -2,9 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
-const NODE_ENV = process.env.NODE_ENV || 'DEVELOPMENT';
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
+
+    mode: NODE_ENV,
+
 	context: path.join(__dirname, 'src'),
 
 	entry: {
@@ -27,12 +30,12 @@ module.exports = {
 		extensions: [ '.js' ]
 	},
 
-	watch: NODE_ENV === 'DEVELOPMENT',
+	watch: NODE_ENV === 'development',
 	watchOptions: {
 		aggregateTimeout: 100
 	},
 
-	devtool: NODE_ENV === 'DEVELOPMENT' ? 'eval-source-map' : 'source-map',
+	devtool: NODE_ENV === 'development' ? 'eval-source-map' : 'source-map',
 
 	module: {
 		rules: [
@@ -73,6 +76,6 @@ module.exports = {
 	]
 };
 
-if (NODE_ENV === 'PRODUCTION') {
+if (NODE_ENV === 'production') {
 	module.exports.plugins.push(new webpack.optimize.UglifyJsPlugin());
 };
