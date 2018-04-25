@@ -1,81 +1,86 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
+module.exports = (env) => {
 
-module.exports = {
+    return {
+        mode: env.NODE_ENV || 'development',
 
-    mode: NODE_ENV,
+        context: path.join(__dirname, 'src'),
 
-	context: path.join(__dirname, 'src'),
+        entry: {
+            bundle: './index'
+        },
 
-	entry: {
-		bundle: './index'
-	},
+        output: {
+            path: path.join(__dirname, env.NODE_ENV === 'development' ? 'build-client-dev' : 'build-client-prod'),
+            filename: '[name].js'
+        },
 
-	output: {
-		path: path.join(__dirname, 'built'),
-		filename: '[name].js'
-	},
+        resolve: {
+            extensions: ['.js', '.jsx']
+        },
 
-	resolve: {
-		// modulesDirectories: ['node_modules'],
-		extensions: [ '.js', '.jsx' ]
-	},
+        resolveLoader: {
+            extensions: ['.js']
+        },
 
-	resolveLoader: {
-		// modulesDirectories: ['node_modules'],
-		// moduleTemplates: ['*-loader', '*'],
-		extensions: [ '.js' ]
-	},
+        watch: env.NODE_ENV === 'development',
+        watchOptions: {
+            aggregateTimeout: 100
+        },
 
-	watch: NODE_ENV === 'development',
-	watchOptions: {
-		aggregateTimeout: 100
-	},
+        devtool: env.NODE_ENV === 'development' ? 'eval-source-map' : 'source-map',
 
-	devtool: NODE_ENV === 'development' ? 'eval-source-map' : 'source-map',
+        module: {
+            rules: [
+                {
+                    test: /\.jsx?$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            plugins: ['transform-react-jsx']
+                            // presets: ['env']
+                        }
+                    }
+                },
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: ['eslint-loader']
+                }
+            ]
+        },
 
-	module: {
-		rules: [
-			{
-				test: /\.jsx?$/,
-				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						plugins: [ 'transform-react-jsx' ]
-						// presets: ['env']
-					}
-				}
-			},
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: [ 'eslint-loader' ]
-			}
-		]
-	},
+        devServer: {
+            contentBase: path.join(__dirname, './built/'),
+            host: 'localhost',
+            port: 8080
+        },
 
-	devServer: {
-		contentBase: path.join(__dirname, './built/'),
-		host: 'localhost',
-		port: 8080
-	},
-
-	plugins: [
-		new webpack.DefinePlugin({
-			NODE_ENV: JSON.stringify(NODE_ENV)
-		}),
-		new HtmlWebpackPlugin({
-			title: 'Title?',
-			hash: true,
-			template: './index.html'
-		})
-	]
-};
-
-if (NODE_ENV === 'production') {
-	module.exports.plugins.push(new webpack.optimize.UglifyJsPlugin());
+        plugins: [
+            new CleanWebpackPlugin(['build-client-dev', 'build-client-prod'], {
+                verbose: true,
+            }),
+            new HtmlWebpackPlugin({
+                title: 'Specially for Mikalai Ausiannikau',
+                welcome: 'Good morning, Mikalai Ausiannikau',
+                minify: env.NODE_ENV === 'development' 
+                    ? false 
+                    : {
+                        collapseWhitespace: true,
+                        collapseBooleanAttributes: true,
+                        collapseInlineTagWhitespace: true,
+                        html5: true,
+                        sortAttributes: true,
+                        sortClassName: true,
+                    },
+                hash: true,
+                template: './index.html'
+            })
+        ]
+    }
 };
