@@ -3,7 +3,10 @@
   "plugins": [
     "react"
   ],
-  "rules": {},
+  "rules": {
+    "indent": ["error", 4],
+    "no-console": 0
+  },
   "extends": [
     "airbnb-base"
   ],
