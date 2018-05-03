@@ -1,0 +1,30 @@
+.MovieItem {
+    width: 100%;
+}
+
+.MovieItem__Image {
+    width: 100%;
+}
+
+.MovieItem__ReleaseDate {
+    border: 1px solid black;
+    padding: 2px;
+    display: inline-block;
+}
+
+
+.MovieItem__Genres {
+    /* white-space: nowrap;
+    width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}
+
+.MovieItem__Title {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #000;
+    letter-spacing: -.5px;
+}

@@ -1,0 +1,15 @@
+.Switch {
+    color: white;
+    display: inline-block;
+}
+
+.Switch__Param {
+    display: inline-block;
+    margin-left: 1em;
+    padding: .25em;
+}
+
+.Switch_activeParam {
+    color: white;
+    background-color: red;
+}
