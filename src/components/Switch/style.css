@@ -1,15 +1,19 @@
-.Switch {
+.switch {
     color: white;
     display: inline-block;
 }
 
-.Switch__Param {
+.switch__param {
     display: inline-block;
     margin-left: 1em;
     padding: .25em;
+    padding-left: .5em;
+    padding-right: .5em;
+    cursor: pointer; 
 }
 
-.Switch_activeParam {
+.switch__param--active {
     color: white;
     background-color: red;
+    border-radius: .25em;
 }

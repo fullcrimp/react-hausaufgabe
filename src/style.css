@@ -7,7 +7,7 @@ html, body {
     color: #333;
 }
 
-.ContentContainer {
+.content-container {
     margin: auto;
     width: 100%;
     padding-left: 1em;
@@ -16,14 +16,14 @@ html, body {
 }
 
 @media (min-width: 400px) {
-    .ContentContainer {
+    .content-container {
         padding: 0;
         width: 80%;
     }
 }
 
 @media (min-width: 600px) {
-    .ContentContainer {
+    .content-container {
         width: 580px;
     }
 }

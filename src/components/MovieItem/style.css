@@ -1,26 +1,26 @@
-.MovieItem {
+.movie-item {
     width: 100%;
 }
 
-.MovieItem__Image {
+.movie-item__image {
     width: 100%;
 }
 
-.MovieItem__ReleaseDate {
+.movie-item__release-date {
     border: 1px solid black;
     padding: 2px;
     display: inline-block;
 }
 
 
-.MovieItem__Genres {
+.movie-item__genres {
     /* white-space: nowrap;
     width: 50px;
     overflow: hidden;
     text-overflow: ellipsis; */
 }
 
-.MovieItem__Title {
+.movie-item__title {
     margin: 0;
     padding: 0;
     text-transform: uppercase;

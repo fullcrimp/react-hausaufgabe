@@ -6,18 +6,18 @@ import './style.css';
 class Search extends React.Component {
     render() {
         return (
-            <div className="Search">
-                <div className="Search__header">
+            <div className="search">
+                <div className="search__header">
                     netflixroulette
                 </div>
-                <div className="Search__searchControls">
-                    <input className="Search_input" />
-                    <Switch text="Search by" params={["genre","title"]} />
-                    <button className="Search_button">Search</button>
+                <div className="search__search-controls">
+                    <input className="search_input" />
+                    <Switch text="search by" params={ ["genre","title"] } />
+                    <button className="search_button">search</button>
                 </div>
-                <div className="Search__result">
+                <div className="search__result">
                     0 movies found 
-                    <Switch text="Search by" params={["date","rating"]}/>
+                    <Switch text="search by" params={ ["date","rating"] }/>
                 </div>
             </div>
         );

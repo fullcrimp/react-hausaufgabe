@@ -1,4 +1,4 @@
-.MovieList {
+.movie-list {
     width: 100%;
     display: grid;
     grid-template-columns: auto;
@@ -8,14 +8,14 @@
 }
 
 @media (min-width: 400px) {
-    .MovieList {
+    .movie-list {
         grid-column-gap: 1em;
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (min-width: 600px) {
-    .MovieList {
+    .movie-list {
         grid-column-gap: 1em;
         grid-template-columns: 1fr 1fr 1fr;
     }

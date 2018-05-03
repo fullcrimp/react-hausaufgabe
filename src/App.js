@@ -6,13 +6,14 @@ import Footer from './components/Footer';
 import Search from './components/Search';
 
 import movies from './fixtures'
-
 import './style.css';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = {
+            hasError: false,
+        };
     }
 
     componentDidCatch(error, info) {
@@ -20,16 +21,15 @@ export default class App extends React.Component {
         console.log(error, info);
     }
 
-
     render() {
         if (this.state.hasError) {
             return <h1>Something went wrong.</h1>;
         }
         return (
-            <div className="ContentContainer">
+            <div className="content-container">
                 <Search />
-                <MovieDetails movie={movies.data[0]} />
-                <MovieList movies={movies.data} />
+                <MovieDetails movie={ movies.data[0] } />
+                <MovieList movies={ movies.data } />
                 <Footer />
             </div>
         );

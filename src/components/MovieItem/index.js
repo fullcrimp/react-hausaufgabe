@@ -4,10 +4,6 @@ import propTypes from 'prop-types';
 import './style.css';
 
 class MovieItem extends React.Component {
-    constructor() {
-        super()
-    }
-
     renderDate(stringDate) {
         return (
             1900 + (new Date(stringDate)).getYear()
@@ -16,12 +12,13 @@ class MovieItem extends React.Component {
 
     render() {
         const { movie } = this.props;
+        const {title, poster_path, release_date, genres} = movie;
         return (
-            <div className="MovieItem">
-                <img src= { movie.poster_path } className="MovieItem__Image"/>
-                <h2 className="MovieItem__Title">{movie.title}</h2>
-                <div className="MovieItem__ReleaseDate">{this.renderDate(movie.release_date)}</div>
-                <div className="MovieItem__Genres">{movie.genres[0]}</div>
+            <div className="movie-item">
+                <img src= { poster_path } className="movie-item__image"/>
+                <h2 className="movie-item__title">{ title }</h2>
+                <div className="movie-item__release-date">{ this.renderDate(release_date) }</div>
+                <div className="movie-item__genres">{ genres[0] }</div>
             </div>
         )
     }

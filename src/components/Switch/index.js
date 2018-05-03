@@ -11,23 +11,26 @@ class Switch extends React.Component {
         };
     }
     handleClick(which) {
-        this.setState({chosenParamIndex: which })
+        this.setState({
+            chosenParamIndex: which,
+        }); 
     }
 
     getClass(index) {
-        return "Switch__Param " + (this.state.chosenParamIndex === index ? "Switch_activeParam" : "");
+        const activeParamClass = this.state.chosenParamIndex === index ? "switch__param--active" : "";
+        return `switch__param ${activeParamClass}`;
     }
 
     render() {
         const { params, text } = this.props;
         return (
-            <div className="Switch">
-                {text}
-                <span className={this.getClass(0)} onClick={() => this.handleClick(0)}>
-                    {params[0]}
+            <div className="switch">
+                { text }
+                <span className={ this.getClass(0) } onClick={ this.handleClick.bind(this, 0) }>
+                    { params[0] }
                 </span>
-                <span className={this.getClass(1)} onClick={() => this.handleClick(1)}>
-                    {params[1]}
+                <span className={ this.getClass(1) } onClick={ this.handleClick.bind(this, 1) }>
+                    { params[1] }
                 </span>   
             </div>
         );
