@@ -19,7 +19,7 @@ module.exports = merge(commonConfig, {
     devServer: {
         contentBase: path.join(__dirname, './build-client-prod/'),
         host: 'localhost',
-        port: 8080,
+        port: 8081,
     },
     plugins: [
         new Dotenv({

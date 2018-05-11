@@ -18,14 +18,16 @@ class Switch extends React.Component {
 
     getClass(index) {
         const activeParamClass = this.state.chosenParamIndex === index ? "switch__param--active" : "";
-        return `switch__param ${activeParamClass}`;
+        return `switch__param ${activeParamClass} switch__param_${index}`;
     }
 
     render() {
         const { params, text } = this.props;
         return (
             <div className="switch">
-                { text }
+                <span className="switch__text">
+                    { text }
+                </span>
                 <span className={ this.getClass(0) } onClick={ this.handleClick.bind(this, 0) }>
                     { params[0] }
                 </span>

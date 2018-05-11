@@ -15,7 +15,7 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                exclude: /node_modules/,
+                exclude: /(node_modules|test\.js|cypress|__mocks__)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
