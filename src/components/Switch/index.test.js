@@ -1,12 +1,12 @@
 import React from 'react';
-import {render} from 'enzyme';
+import { shallow } from 'enzyme';
 import Switch from './index';
 
 const text = "testTextString";
 const params = ["date", "rating"];
 
 test('Switch changes the text after click', () => {
-    const wrapper = render(<Switch text={ text } params={ params } />);
+    const wrapper = shallow(<Switch text={ text } params={ params } />);
 
     expect(wrapper.find(".switch__text").text()).toEqual(text);
     

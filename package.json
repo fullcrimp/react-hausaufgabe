@@ -62,7 +62,7 @@
       "\\.(jpg|jpeg|png|svg)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/__mocks__/style.css"
     },
-      "unmockedModulePathPatterns": [
+    "unmockedModulePathPatterns": [
       "react",
       "enzyme",
       "jest-enzyme"
