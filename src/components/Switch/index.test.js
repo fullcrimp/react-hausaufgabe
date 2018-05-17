@@ -12,6 +12,6 @@ test('Switch changes the text after click', () => {
     
     wrapper.find('.switch__param_1').simulate('click');
     
-    expect(wrapper.find('.switch__param_1')).hasClass('switch__param--active');
+    expect(wrapper.find('.switch__param_1').hasClass('switch__param--active')).toBe(true);
 });
   
