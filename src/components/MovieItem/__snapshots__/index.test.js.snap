@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieItem is created 1`] = `
+<div
+  className="movie-item"
+>
+  <img
+    className="movie-item__image"
+    src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+  />
+  <h2
+    className="movie-item__title"
+  >
+    Fifty Shades Freed
+  </h2>
+  <div
+    className="movie-item__release-date"
+  >
+    2018
+  </div>
+  <div
+    className="movie-item__genres"
+  >
+    Drama
+  </div>
+</div>
+`;

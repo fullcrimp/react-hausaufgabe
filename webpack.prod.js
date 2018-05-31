@@ -3,20 +3,23 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 const commonConfig = require('./webpack.common.js');
 
 module.exports = merge(commonConfig, {
     mode: 'production',
     output: {
-        filename: '[name].js',
         path: path.join(__dirname, 'build-client-prod'),
+        filename: '[chunkhash].js',
+        chunkFilename: '[chunkhash].js',
     },
     devtool: 'source-map',
+    cache: true, // better performance for the AggressiveSplittingPlugin
     devServer: {
         contentBase: path.join(__dirname, './build-client-prod/'),
         host: 'localhost',
-        port: 8080,
+        port: 8081,
     },
     plugins: [
         new Dotenv({
@@ -25,6 +28,11 @@ module.exports = merge(commonConfig, {
         new CleanWebpackPlugin(['build-client-prod'], {
             verbose: true,
         }),
+        // @TODO turn on aggresive splitting
+        // new webpack.optimize.AggressiveSplittingPlugin({
+        //     minSize: 30000,
+        //     maxSize: 50000,
+        // }),
         new HtmlWebpackPlugin({
             title: 'Specially for Mikalai Ausiannikau',
             welcome: 'Good morning, Mikalai Ausiannikau',
@@ -40,4 +48,5 @@ module.exports = merge(commonConfig, {
             template: './index.html',
         }),
     ],
+    recordsOutputPath: path.join(__dirname, './build-client-prod/', 'records.json'),
 });

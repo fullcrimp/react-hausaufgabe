@@ -5,16 +5,19 @@
   ],
   "rules": {
     "indent": ["error", 4],
-    "no-console": 0
+    "no-console": 0,
+    "quote-props": 0
   },
   "extends": [
-    "airbnb-base"
+    "eslint:recommended",
+    "plugin:react/recommended"
   ],
   "env": {
     "browser": true,
     "node": true
   },
   "globals": {
-    "NODE_ENV": false
+    "NODE_ENV": false,
+    "React": false
   }
 }
