@@ -1,19 +1,27 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import { connect } from 'react-redux'
+import { fetchMoviesIfNeeded } from './actions'
+import PropTypes from 'prop-types';
+
+
 import MovieList from './components/MovieList';
-import MovieDetails from './components/MovieDetails';
+// import MovieDetails from './components/MovieDetails';
 import Footer from './components/Footer';
 import Search from './components/Search';
 
-import movies from './fixtures'
 import './style.css';
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             hasError: false,
         };
+    }
+
+    componentDidMount() {
+        const { dispatch } = this.props
+        dispatch(fetchMoviesIfNeeded(this.props))
     }
 
     componentDidCatch(error, info) {
@@ -28,15 +36,24 @@ export default class App extends React.Component {
         return (
             <div className="content-container">
                 <Search />
-                <MovieDetails movie={ movies.data[0] } />
-                <MovieList movies={ movies.data } />
+                <MovieList movies={ this.props.movies } />
                 <Footer />
             </div>
         );
     }
 }
 
-ReactDom.render(
-    <App />,
-    document.getElementById('root'),
-);
+App.propTypes = {
+    movies: PropTypes.array.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired
+}
+
+function mapStateToProps(state) {
+    return { 
+        movies: state.movies,
+        isFetching: state.isFetching,
+    }
+}
+
+export default connect(mapStateToProps)(App)
