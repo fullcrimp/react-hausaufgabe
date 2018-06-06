@@ -4,6 +4,15 @@ import MovieList from './components/MovieList';
 import MovieDetails from './components/MovieDetails';
 import Footer from './components/Footer';
 import Search from './components/Search';
+import NoMatch from './components/NoMatch';
+
+
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+} from 'react-router-dom'
 
 import movies from './fixtures'
 import './style.css';
@@ -27,9 +36,25 @@ export default class App extends React.Component {
         }
         return (
             <div className="content-container">
-                <Search />
-                <MovieDetails movie={ movies.data[0] } />
-                <MovieList movies={ movies.data } />
+                
+                
+                <Router> 
+                    <div>
+                        <Search />
+                        <ul>
+                            <li><Link to='/'>home</Link></li>
+                            <li><Link to='/search'>search</Link></li>
+                            <li><Link to='/details'>details</Link></li>
+                        </ul>
+                        <Switch>
+                            <Route path='/' exact render={ (props) => <MovieList {...props} movies={ movies.data } /> } />
+                            <Route path='/search' exact render={ (props) => <MovieList {...props} movies={ movies.data } /> } />
+                            <Route path='/search/:searchString' render={ (props) => <MovieList {...props} movies={ movies.data } /> } />
+                            <Route path='/details/:id' render={ (props) => <MovieDetails {...props} movies={ movies.data }/> } />
+                            <Route component={NoMatch}/>
+                        </ Switch>
+                    </div>
+                </Router>
                 <Footer />
             </div>
         );
