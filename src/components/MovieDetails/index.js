@@ -10,8 +10,10 @@ class MovieDetails extends React.Component {
         )
     }
     render() {
-        const { movie } = this.props;
-        const { title, poster_path, release_date, overview, tagline, runtime } = movie;
+
+        const { match, movies } = this.props;
+        const id = parseInt(match.params.id, 10)
+        const { title, poster_path, release_date, overview, tagline, runtime } = movies.filter(item => item.id == id)[0];
         return (
             <div className="movie-details">
                 <img src= { poster_path } className="movie-details__image"/>
@@ -27,7 +29,8 @@ class MovieDetails extends React.Component {
 }
 
 MovieDetails.propTypes = {
-    movie: propTypes.object,
+    movies: propTypes.array,
+    match: propTypes.object,
 };
 
 export default MovieDetails;

@@ -1,9 +1,23 @@
 import React from 'react';
 import Switch from '../Switch';
+import { Link } from 'react-router-dom'
 
 import './style.css';
 
 class Search extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchString: '',
+        };
+    }
+
+    updateSearchString(e) {
+        this.setState({
+            searchString: e.target.value
+        });
+    }
+
     render() {
         return (
             <div className="search">
@@ -11,9 +25,13 @@ class Search extends React.Component {
                     netflixroulette
                 </div>
                 <div className="search__search-controls">
-                    <input className="search_input" />
+                    <input className="search_input" value={this.state.searchString} onChange={e => this.updateSearchString(e)} />
                     <Switch text="search by" params={ ["genre","title"] } />
-                    <button className="search_button">search</button>
+                    <button className="search_button">
+                        <Link to={{ pathname: `/search/${this.state.searchString}` }}>
+                            search
+                        </Link>
+                    </button>
                 </div>
                 <div className="search__result">
                     0 movies found 

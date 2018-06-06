@@ -34,6 +34,7 @@
     box-sizing: border-box;
     grid-column: span 2;
     border-radius: .25em;
+    color: white;
 }
 
 .search_button {
@@ -46,6 +47,10 @@
     border-radius: .25em;
 }
 
+.search_button a {
+    text-decoration: none;
+    color: white;
+}
 
 .search__header {
     padding: 1em;
