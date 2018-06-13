@@ -45,14 +45,16 @@ const data = [
 
 describe('MovieList render', () => {
 
+    const onSelectMovieMock = () => {}
+
     test('MovieList exists', () => {
-        const wrapper = shallow(<MovieList movies={ data } />);
+        const wrapper = shallow(<MovieList movies={ data }  onSelectMovie={onSelectMovieMock} />);
 
         expect(wrapper.find(".movie-list").exists()).toBe(true);
     });
 
     test('MovieList renders all passed MovieItems', () => {
-        const wrapper = mount(<MovieList movies={ data } />);
+        const wrapper = mount(<MovieList movies={ data }  onSelectMovie={onSelectMovieMock} />);
 
         expect(wrapper.find(MovieItem).length).toBe(data.length);
     });

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import MovieItem from './index';
 import renderer from 'react-test-renderer';
@@ -21,8 +22,11 @@ const data = {
 };
 
 test('MovieItem is created', () => {
+    
+    const onSelectMovieMock = () => {}
+
     const component = renderer.create(
-        <MovieItem movie={ data } />
+        <MovieItem { ...data }  onSelectMovie={ onSelectMovieMock }  />
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();

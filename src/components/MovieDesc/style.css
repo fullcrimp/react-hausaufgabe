@@ -1,0 +1,29 @@
+.movie-desc {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-column-gap: 1em;
+    padding: 2em;
+    box-sizing: border-box;
+}
+
+.movie-desc__image {
+    width: 100%;
+}
+
+.movie-desc__desc {}
+
+.movie-desc__release-date {}
+
+.movie-desc__genres {}
+
+.movie-desc__title {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: red;
+    letter-spacing: -.5px;
+}	
