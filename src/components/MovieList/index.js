@@ -1,24 +1,21 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import MovieItem from '../MovieItem';
-import './style.css';
+import MovieItem from '../MovieItem'
+import './style.css'
 
-class MovieList extends React.Component {
-    render() {
-        const { movies } = this.props;
-        return (
-            <div className="movie-list">
-                { movies.map(movie =>
-                    <MovieItem key = { movie.id } movie = { movie }/>
-                ) }
-            </div>
-        )
-    }
-}
+const MovieList = ({ movies, onSelectMovie }) => (
+    <div className="movie-list">
+        { movies.length === 0 && <div className="movie-list__empty">No films found</div> }
+        { movies.map(movie => 
+            <MovieItem key={ movie.id } { ...movie } onSelectMovie={ onSelectMovie } />
+        ) }
+    </div>
+)
 
 MovieList.propTypes = {
-    movies: propTypes.array,
-};
+    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onSelectMovie: PropTypes.func.isRequired
+}
 
-export default MovieList;
+export default MovieList

@@ -1,0 +1,20 @@
+.sorting {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ccc;
+  padding: .5em;
+  color: black;
+}
+
+.sorting__button {
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.sorting__button--selected {
+    color: red;
+}
+
+
